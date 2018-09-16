@@ -66,21 +66,24 @@ post: returns the number of words stored in the block of memory.  A word
 */
 int wc(char* inp)
 {	
-	char c;
-	int wordCount = 0;	
-	for(int index = 0;index<MAX_LINE;index++){
-		c = inp[index];
-		if(c == '\0'){
-			break;
-		}
-		else{
-			wordCount++;
-			while(inp[index+1] != ' ' && inp[index+1] != '\t' && inp[index+1] != '\0'){ 
-				index++;
-			}
+ char c;
+ int wordCount = 0;	
+ for(int index = 0;index<MAX_LINE;index++){
+  c = inp[index];
+  if(c == '\0'){
+   break;
+  }
+  else if(c == ' ' || c == '\t'){
+    continue;
+  }
+  else{
+    wordCount++;
+    while(inp[index+1] != ' ' && inp[index+1] != '\t' && inp[index+1] != '\0'){ 
+      index++;
+    }
 			
-		}	
-	}
-	return wordCount;
+   }	
+ }
+return wordCount;
 }
 
